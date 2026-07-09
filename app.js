@@ -54,7 +54,7 @@ function findTaskByTitle() {
     // Wrong loop construct
     let i = 0;
     while (i < taskList.length) {
-        if (taskList[i].title == title) {  // Should use ===
+        if (taskList[i].title === title) {
             return taskList[i];
         }
         // Missing: i++
@@ -68,7 +68,7 @@ function updateTaskPriority(taskId, newPriority) {
     // Missing: null/undefined validation
     
     for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].id = taskId) {  // Wrong operator (= instead of ===)
+        if (taskList[i].id === taskId) {
             taskList[i].priority = newPriority;
             return true;
         }
