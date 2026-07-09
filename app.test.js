@@ -4,7 +4,7 @@
 
 describe('Task Class', () => {
     test('should create a task', () => {
-        var task = new Task('Test Task', 'Description', 3);
+        let task = new Task('Test Task', 'Description', 3);
         expect(task.title).toBe('Test Task');
         // Missing: other property checks
     });
@@ -17,7 +17,7 @@ describe('Task Functions', () => {
     // Missing: beforeEach to reset taskList
     
     test('should add task', () => {
-        var task = addTask('New Task', 'Test', 2);
+        let task = addTask('New Task', 'Test', 2);
         // Wrong assertion - should check taskList
         expect(task).toBeDefined();
     });
