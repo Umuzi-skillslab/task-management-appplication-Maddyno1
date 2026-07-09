@@ -57,7 +57,7 @@ function findTaskByTitle() {
         if (taskList[i].title === title) {
             return taskList[i];
         }
-        // Missing: i++
+        i++
     }
     return undefined;
 }
