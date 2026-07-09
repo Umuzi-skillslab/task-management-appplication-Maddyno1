@@ -1,8 +1,7 @@
 // Task Management Application - Starter Code with Errors
 
-// Global variables (scoping issues)
-const taskList = [];  // Missing var/let/const
-const taskCounter = 0;  // Should use let or const
+const taskList = [];
+const taskCounter = 0;
 
 // Task class with errors
 class Task {
@@ -34,7 +33,7 @@ class SubTask extends Task {
 
 // Function with no error handling
 function addTask(title, description, priority) {
-    const newTask = new Task(title, description, priority);  // Should use const
+    const newTask = new Task(title, description, priority);
     taskList.push(newTask);
     taskCounter++;
     return newTask;
