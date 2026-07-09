@@ -5,12 +5,12 @@ const taskCounter = 0;
 
 // Task class with errors
 class Task {
-    constructor(title, description, priority) {
+    constructor(id, title, description, priority) {
+        this.id = 1++
         this.title = title;
         this.description = description;
         this.priority = priority;
         this.completed = false;
-        // Missing: id property
     }
     
     // Missing: method to toggle completion
