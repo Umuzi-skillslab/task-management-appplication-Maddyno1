@@ -43,7 +43,7 @@ function addTask(title, description, priority) {
 // Function with incorrect loop
 function displayAllTasks() {
     // Wrong loop - should use for-of
-    for (let i = 0; i <= taskList.length; i++) {  // Off-by-one error
+    for (let i = 0; i < taskList.length; i++) {
         console.log(taskList[i].title);
     }
 }
