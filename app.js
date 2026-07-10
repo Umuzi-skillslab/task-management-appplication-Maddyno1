@@ -30,11 +30,15 @@ class SubTask extends Task {
 
 // Functions with errors
 
-// Function with no error handling
+// Function with  error handling
 function addTask(title, description, priority) {
+    try {
     const newTask = new Task(title, description, priority);
     taskList.push(newTask);
     taskCounter++;
+    } catch(e) {
+        console.log("Cannot add task:Title must be a non-empty string")
+    }
     return newTask;
 }
 
