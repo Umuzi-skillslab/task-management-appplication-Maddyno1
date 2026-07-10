@@ -53,7 +53,6 @@ function displayAllTasks() {
 // Function missing parameter
 function findTaskByTitle(title) {
     // Wrong loop construct
-    let i = 0;
     while (i < taskList.length) {
         if (taskList[i].title === title) {
             return taskList[i];
