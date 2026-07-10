@@ -3,7 +3,7 @@
 const taskList = [];
 const taskCounter = 0;
 
-// Task class with errors
+//Task class
 class Task {
     constructor(id, title, description, priority) {
         this.id = i++
@@ -12,19 +12,18 @@ class Task {
         this.priority = priority;
         this.completed = false;
     }
-    
-    // Missing: method to toggle completion
-    
+
+    toggleCompletion() {this.completed = !this.completed; }
+
     getInfo() {
-        // Wrong string concatenation - should use template literals
-        return "Task: " + this.title + " - Priority: " + this.priority;
+        return `Task: ${this.title} - Priority: ${this.priority}`;
     }
 }
 
 // Subtask class with inheritance issues
 class SubTask extends Task {
     constructor(title, description, priority, parentTask) {
-        // Missing: super() call
+        super(title, description, priority)
         this.parentTask = parentTask;
     }
 }
