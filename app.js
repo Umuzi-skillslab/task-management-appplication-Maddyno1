@@ -45,14 +45,13 @@ function addTask(title, description, priority) {
 // Function with incorrect loop
 function displayAllTasks() {
     // Wrong loop - should use for-of
-    for (let i = 0; i < taskList.length; i++) {
+    for ([i] of taskList) {
         console.log(taskList[i].title);
     }
 }
 
 // Function missing parameter
-function findTaskByTitle() {
-    // Missing: title parameter
+function findTaskByTitle(title) {
     // Wrong loop construct
     let i = 0;
     while (i < taskList.length) {
