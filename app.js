@@ -64,7 +64,7 @@ function findTaskByTitle(title) {
     return undefined;
 }
 
-// Function with type checking issues
+// Function with type checking
 function updateTaskPriority(taskId, newPriority) {
     if (typeof newPriority !== "number" || newPriority < 1) {
         console.log("Priority must be a positive number");
@@ -80,7 +80,7 @@ function updateTaskPriority(taskId, newPriority) {
     return false;
 }
 
-// Function that should use destructuring but doesn't
+// Function that uses destructuring
 function getTaskDetails(task) {
 
     const { title, description, priority, completed } = task;
@@ -88,14 +88,14 @@ function getTaskDetails(task) {
     return { title, description, priority, completed };
 }
 
-// Function missing spread/rest operators
+// Function with spread/rest operators
 function mergeTasks(list1, list2) {
     return [...list1, list2];
 }
 
 // Recursive function with error
-function countCompletedTasks(tasks, index) {
-    // Missing: base case check
+function countCompletedTasks(tasks, index = 0) {
+    if (index >= tasks.length) return 0;
     // Missing: null/undefined check
 
     if (tasks[index].completed) {
