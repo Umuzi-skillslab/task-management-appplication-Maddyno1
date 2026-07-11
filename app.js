@@ -1,12 +1,12 @@
 // Task Management Application - Starter Code with Errors
 
-const taskList = [];
-const taskCounter = 0;
+let taskList = [];
+let taskCounter = 0;
 
 //Task class
 class Task {
     constructor(id, title, description, priority) {
-        this.id = i++
+        this.id = id;
         this.title = title;
         this.description = description;
         this.priority = priority;
@@ -22,8 +22,8 @@ class Task {
 
 // Subtask class with inheritance issues
 class SubTask extends Task {
-    constructor(title, description, priority, parentTask) {
-        super(title, description, priority)
+    constructor(id, title, description, priority, parentTask) {
+        super(id, title, description, priority)
         this.parentTask = parentTask;
     }
 }
@@ -53,6 +53,7 @@ function displayAllTasks() {
 // Function missing parameter
 function findTaskByTitle(title) {
     // Wrong loop construct
+    let i = 0;
     while (i < taskList.length) {
         if (taskList[i].title === title) {
             return taskList[i];
