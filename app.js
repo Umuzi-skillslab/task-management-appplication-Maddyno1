@@ -13,7 +13,7 @@ class Task {
         this.completed = false;
     }
 
-    toggleCompletion() {this.completed = !this.completed; }
+    toggleCompletion() { this.completed = !this.completed; }
 
     getInfo() {
         return `Task: ${this.title} - Priority: ${this.priority}`;
@@ -32,21 +32,22 @@ class SubTask extends Task {
 
 // Function with  error handling
 function addTask(title, description, priority) {
-    try {
-    const newTask = new Task(title, description, priority);
+    if (typeof title !== "string" || !title.trim()) {
+        console.log("Cannot add task:Title must be a non-empty string");
+
+        return undefined;
+    }
+    const newTask = new Task(taskCounter, title, description, priority);
     taskList.push(newTask);
     taskCounter++;
-    } catch(e) {
-        console.log("Cannot add task:Title must be a non-empty string")
-    }
     return newTask;
 }
 
 // Function with incorrect loop
 function displayAllTasks() {
     // Wrong loop - should use for-of
-    for ([i] of taskList) {
-        console.log(taskList[i].title);
+    for (const task of taskList) {
+        console.log(task.title);
     }
 }
 
@@ -67,7 +68,7 @@ function findTaskByTitle(title) {
 function updateTaskPriority(taskId, newPriority) {
     // Missing: typeof check for parameters
     // Missing: null/undefined validation
-    
+
     for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].id === taskId) {
             taskList[i].priority = newPriority;
@@ -84,7 +85,7 @@ function getTaskDetails(task) {
     const description = task.description;
     const priority = task.priority;
     const completed = task.completed;
-    
+
     return {
         title: title,
         description: description,
@@ -110,7 +111,7 @@ function mergeTasks(list1, list2) {
 function countCompletedTasks(tasks, index) {
     // Missing: base case check
     // Missing: null/undefined check
-    
+
     if (tasks[index].completed) {
         return 1 + countCompletedTasks(tasks, index + 1);
     } else {
@@ -123,7 +124,7 @@ function calculateAveragePriority() {
     let total = 0;
     // Missing: check for empty array
     for (let i = 0; i < taskList.length; i++) {
-       let total = total + taskList[i].priority;
+        let total = total + taskList[i].priority;
     }
     // Should use Math.round or toFixed
     return total / taskList.length;
@@ -144,11 +145,11 @@ function getHighPriorityTasks(minPriority) {
 // Object with missing methods
 const TaskManager = {
     tasks: taskList,
-    
+
     // Missing: method to add task using functional approach
     // Missing: method using array methods (map, filter, reduce)
-    
-    getTotalTasks: function() {
+
+    getTotalTasks: function () {
         return this.tasks.length;
     }
 };
