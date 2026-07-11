@@ -66,8 +66,10 @@ function findTaskByTitle(title) {
 
 // Function with type checking issues
 function updateTaskPriority(taskId, newPriority) {
-    // Missing: typeof check for parameters
-    // Missing: null/undefined validation
+    if (typeof newPriority !== "number" || newPriority < 1) {
+        console.log("Priority must be a positive number");
+        return false;
+    }
 
     for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].id === taskId) {
