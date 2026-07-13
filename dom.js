@@ -32,16 +32,18 @@ function handleAddTask() {
 
     const titleInput = document.getElementById("title");
     const descInput = document.getElementById("description");
+    const priorityInput = document.querySelector("#priority");
     
     // No validation
     // Should use event.preventDefault() if form
     
     const title = titleInput.value;
     const description = descInput.value;
+    const priority = priorityInput ? Number(priorityInput.value) || 1 : 1;
     
     // Missing: priority input
     
-    addTask(title, description, 1);
+    addTask(title, description, priority);
     displayTasks();
     
     // Missing: clear inputs after adding
