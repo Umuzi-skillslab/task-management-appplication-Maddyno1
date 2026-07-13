@@ -23,8 +23,7 @@ function setupEventListeners() {
         taskForm.addEventListener("submit", handleAddTask);
     }
 }
-
-// Function with DOM manipulation errors
+//Function that handles tasks
 function handleAddTask() {
     if (event && typeof event.preventDefault === "function") {
         event.preventDefault();

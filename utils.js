@@ -1,18 +1,23 @@
-// Utilities - Starter Code (WITH ERRORS AND MISSING FEATURES)
+// Utilities
 
-// Bug: Not using proper data structures
 const priorities = Object.freeze(["low", "medium", "high"]);
 
-// Bug: Missing JSON operations
 function saveToStorage(data) {
-    // Bug: Not converting to JSON
-    localStorage.setItem("tasks", data);
+    try {
+    localStorage.setItem("tasks", JSON.stringify(data));
+    } catch (err) {
+        console.error("Could not save tasks:",err);
+    }
 }
 
 function loadFromStorage() {
-    // Bug: Not parsing JSON
-    var data = localStorage.getItem("tasks");
-    return data;
+    try {
+        const raw = localStorage.getItem("tasks");
+        return raw ? JSON.parse(raw) : [];
+    } catch (err) {
+        console.error("Could not load tasks:", err);
+        return [];
+    }
 }
 
 // Bug: Incorrect Math object usage
