@@ -33,15 +33,15 @@ function handleAddTask() {
     const titleInput = document.getElementById("title");
     const descInput = document.getElementById("description");
     const priorityInput = document.querySelector("#priority");
-    
-    // No validation
-    // Should use event.preventDefault() if form
+
+    if (!titleInput || !descInput) {
+        console.error("Taks form inputs not found");
+        return;
+    }
     
     const title = titleInput.value;
     const description = descInput.value;
     const priority = priorityInput ? Number(priorityInput.value) || 1 : 1;
-    
-    // Missing: priority input
     
     addTask(title, description, priority);
     displayTasks();
