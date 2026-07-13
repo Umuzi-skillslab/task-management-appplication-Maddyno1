@@ -45,7 +45,7 @@ function handleAddTask() {
     
     if (!title) {
         alert("Please enter a task title.");
-        titleInput,focus();
+        titleInput.focus();
         return;
     }
 
