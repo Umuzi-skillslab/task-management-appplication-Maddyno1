@@ -99,8 +99,10 @@ function handleTaskClick(event) {
     console.log("Task clicked: " + taskId);
 }
 
-// Missing: JSON conversion functions
-// Missing: functions to save/load tasks from localStorage
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
 
-// Initialize (wrong placement - should use DOMContentLoaded)
+function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 setupEventListeners();
