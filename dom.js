@@ -18,7 +18,7 @@ function setupEventListeners() {
     addButton.addEventListener("click", handleAddTask);
 
     // Other event listeners for form submission, etc.
-    const taskForm =document.querySelector("#task-form");
+    const taskForm = document.querySelector("#task-form");
     if (taskForm) {
         taskForm.addEventListener("submit", handleAddTask);
     }
@@ -42,7 +42,7 @@ function handleAddTask() {
     const title = titleInput.value;
     const description = descInput.value;
     const priority = priorityInput ? Number(priorityInput.value) || 1 : 1;
-    
+
     if (!title) {
         alert("Please enter a task title.");
         titleInput.focus();
@@ -51,7 +51,7 @@ function handleAddTask() {
 
     addTask(title, description, priority);
     displayTasks();
-    
+
     //Clear inputs after adding
     titleInput.value = "";
     descInput.value = "";
@@ -65,27 +65,36 @@ function displayTasks() {
         console.error("#task-list not found in the DOM");
         return;
     }
-    
+
     container.innerHTML = "";
-    
-    // Inefficient - should use template literals and insertAdjacentHTML
-    for (let i = 0; i < taskList.length; i++) {
-        let div = document.createElement("div");
-        div.innerHTML = "<h3>" + taskList[i].title + "</h3>";
-        div.innerHTML = div.innerHTML + "<p>" + taskList[i].description + "</p>";
+
+    taskList.forEach((task) => {
+        const div = document.createElement("div");
+        div.className = "task" + (task.completed ? " task--completed" : "");
+        div.dataset.id = task.id;
+
+        div.innerHTML = `
+        <h3></h3>
+        <p></p>
+        <button type="button" data-action="complete">
+            ${task.completed ? "Undo" : "Complete"}
+        </button>
+        <button type="button" data-action="delete">Delete</button>
+        `;
+        div.querySelector("h3").textContent = task.title;
+        div.querySelector("p").textContent = task.description;
+
         container.appendChild(div);
-        
-        // Missing: task ID, completion status, event handlers for delete/complete
-    }
+    });
 }
 
 // Function with event handling issues
 function handleTaskClick(event) {
     // Missing: event.target check
     // Missing: proper event delegation
-    
+
     var taskId = event.target.id;  // Wrong way to get task ID
-    
+
     // Should toggle task completion
     console.log("Task clicked: " + taskId);
 }
