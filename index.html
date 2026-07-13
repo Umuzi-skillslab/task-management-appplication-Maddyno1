@@ -15,8 +15,13 @@
 
             <input type="text" id="title" placeholder="Task Title">
             <input type="text" id="description" placeholder="Description">
-            <input type="text" id="priority" placeholder="Priority">
-            <button class="add-task-btn">Add Task</button>
+            <select id="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+            <button class="add-task-btn" id="add-task-btn">Add Task</button>
+            <p class="form-error" id="form-error" hidden></p>
         </div>
         
         <div class="task-list" id="task-list">
