@@ -58,12 +58,14 @@ function handleAddTask() {
     if (priorityInput) priorityInput.value = "";
 }
 
-// Function that should use better selectors
+// Function that uses proper selectors
 function displayTasks() {
     const container = document.getElementById("task-list");
+    if (!container) {
+        console.error("#task-list not found in the DOM");
+    }
     
-    // Should clear existing content first
-    // Missing: null check
+    
     
     // Inefficient - should use template literals and insertAdjacentHTML
     for (let i = 0; i < taskList.length; i++) {
