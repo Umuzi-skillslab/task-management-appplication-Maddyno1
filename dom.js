@@ -2,11 +2,11 @@
 
 // Missing: proper DOM selectors
 function setupEventListeners() {
-    // correct selector method
+    // Correct selector method
     const addButton = document.getElementById("#add-task-btn");  // Wrong - mixing ID and class
     const taskInput = document.querySelector("#task-input");  // Missing #
 
-    // null checks before adding listeners
+    // Null checks before adding listeners
     if (!addButton) {
         console.error("#add-task-btn not found in the DOM");
         return;
@@ -17,7 +17,7 @@ function setupEventListeners() {
 
     addButton.addEventListener("click", handleAddTask);
 
-    // Missing: other event listeners for form submission, etc.
+    // Other event listeners for form submission, etc.
     const taskForm =document.querySelector("#task-form");
     if (taskForm) {
         taskForm.addEventListener("submit", handleAddTask);
@@ -26,6 +26,10 @@ function setupEventListeners() {
 
 // Function with DOM manipulation errors
 function handleAddTask() {
+    if (event && typeof event.preventDefault === "function") {
+        event.preventDefault();
+    }
+
     const titleInput = document.getElementById("title");
     const descInput = document.getElementById("description");
     
