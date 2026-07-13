@@ -20,16 +20,13 @@ function loadFromStorage() {
     }
 }
 
-// Bug: Incorrect Math object usage
 function generateRandomId() {
-    return Math.random();  // Bug: Returns decimal, not integer
+    return Math.floor(Math.random() * 1_000_000);
 }
 
-// Bug: Poor string manipulation
 function formatTaskName(name) {
-    // Bug: Not using string methods properly
-    let result = name;
-    return result;  // Should capitalize, trim, etc.
+    const trimmed = name.trim();
+    return trimmed.charAt(0).toUpperCase() + trimmed.slice(1).toLowerCase();
 }
 
 // Bug: Incorrect boolean logic
