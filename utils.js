@@ -1,7 +1,7 @@
 // Utilities - Starter Code (WITH ERRORS AND MISSING FEATURES)
 
 // Bug: Not using proper data structures
-var priorities = ["low", "medium", "high"];
+const priorities = Object.freeze(["low", "medium", "high"]);
 
 // Bug: Missing JSON operations
 function saveToStorage(data) {
@@ -23,13 +23,13 @@ function generateRandomId() {
 // Bug: Poor string manipulation
 function formatTaskName(name) {
     // Bug: Not using string methods properly
-    var result = name;
+    let result = name;
     return result;  // Should capitalize, trim, etc.
 }
 
 // Bug: Incorrect boolean logic
 function isHighPriority(task) {
-    if (task.priority == "high") {  // Bug: Using ==
+    if (task.priority === "high") {  // Bug: Using ==
         return "yes";  // Bug: Should return boolean
     }
     return "no";
