@@ -105,4 +105,8 @@ function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-setupEventListeners();
+function setupEventListeners() {
+    document.getElementById("task-list").addEventListener("click", handleTaksClick);
+}
+
+document.addEventListener("DOMContentLoaded", setuoEventListeners);
