@@ -107,38 +107,35 @@ function countCompletedTasks(tasks, index = 0) {
 
 // Function with Math object issues
 function calculateAveragePriority() {
+    if (taskList.length === 0) return 0;
     let total = 0;
     // Missing: check for empty array
     for (let i = 0; i < taskList.length; i++) {
         let total = total + taskList[i].priority;
     }
     // Should use Math.round or toFixed
-    return total / taskList.length;
+    return Math.round((total / taskList.length) * 100) / 100;
 }
 
 // Filter function with errors
 function getHighPriorityTasks(minPriority) {
-    const highPriority = [];
-    // Should use array methods (filter)
-    for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].priority > minPriority) {
-            highPriority.push(taskList[i]);
-        }
-    }
-    return highPriority;
+    return taskList.filter(t => t.priority > minPriority);
 }
 
 // Object with missing methods
 const TaskManager = {
     tasks: taskList,
-
-    // Missing: method to add task using functional approach
-    // Missing: method using array methods (map, filter, reduce)
-
-    getTotalTasks: function () {
-        return this.tasks.length;
+    getTotalTasks() { return this.task.length; },
+    getCompletedTasks() { return this.task.filter(t => t.completed); },
+    getAveragePriority() {
+        if (!this.tasks.length) return 0;
+        return this.tasks.reduce((s, t) => s + t.priority, 0) /
+        this.task.length;
     }
 };
 
-// Export issues - should be a module
-// Missing: proper module exports
+export {
+    Task, SubTask, TaskManager,
+    addTask, findTaskByTitle, updateTaskPriority,
+    mergeTasks, getHighPriorityTasks
+};
