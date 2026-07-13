@@ -38,11 +38,17 @@ function handleAddTask() {
         console.error("Taks form inputs not found");
         return;
     }
-    
+
     const title = titleInput.value;
     const description = descInput.value;
     const priority = priorityInput ? Number(priorityInput.value) || 1 : 1;
     
+    if (!title) {
+        alert("Please enter a task title.");
+        titleInput,focus();
+        return;
+    }
+
     addTask(title, description, priority);
     displayTasks();
     
