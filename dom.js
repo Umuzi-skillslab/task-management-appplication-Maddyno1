@@ -88,15 +88,17 @@ function displayTasks() {
     });
 }
 
-// Function with event handling issues
+// Function with event handling
 function handleTaskClick(event) {
-    // Missing: event.target check
-    // Missing: proper event delegation
+    let target = event.target.closest("[data-task-id]");
+    if (!target) return;
 
-    var taskId = event.target.id;  // Wrong way to get task ID
+    let task = tasks.find(t => t.id === target.dataset.taskId);
+    if (!task) return;
 
-    // Should toggle task completion
-    console.log("Task clicked: " + taskId);
+    task.completed = !task.completed;
+    saveTasks();
+    target.classList.toggle("completed");
 }
 
 let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -109,4 +111,4 @@ function setupEventListeners() {
     document.getElementById("task-list").addEventListener("click", handleTaksClick);
 }
 
-document.addEventListener("DOMContentLoaded", setuoEventListeners);
+document.addEventListener("DOMContentLoaded", setupEventListeners);
