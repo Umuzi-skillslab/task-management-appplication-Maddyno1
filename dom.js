@@ -52,7 +52,10 @@ function handleAddTask() {
     addTask(title, description, priority);
     displayTasks();
     
-    // Missing: clear inputs after adding
+    //Clear inputs after adding
+    titleInput.value = "";
+    descInput.value = "";
+    if (priorityInput) priorityInput.value = "";
 }
 
 // Function that should use better selectors
