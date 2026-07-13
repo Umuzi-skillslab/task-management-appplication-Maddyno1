@@ -63,9 +63,10 @@ function displayTasks() {
     const container = document.getElementById("task-list");
     if (!container) {
         console.error("#task-list not found in the DOM");
+        return;
     }
     
-    
+    container.innerHTML = "";
     
     // Inefficient - should use template literals and insertAdjacentHTML
     for (let i = 0; i < taskList.length; i++) {
