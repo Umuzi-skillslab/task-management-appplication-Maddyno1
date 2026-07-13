@@ -1,4 +1,5 @@
 # Overview of the task management application
+The is a task management app which organises tasks into lists and oreders them according to their importance.
 
 # Errors Found
 1. Variables
@@ -101,27 +102,13 @@ Added a module script and corrected the order of the scripts.
 # Features Added
 
 # Instructions on how to run the application
-## Step 1:
-Clone the project from my Github repository.
+1. Open your project folder in Visual Studio Code.
 
-## Step 2:
-Open the folder in VSCode.
+2. Click the Extensions icon on the left sidebar (looks like 4 blocks).
 
-## Step 3:
-Open your terminal by pressing 'Ctrl + ` '.
+3. Search for Live Server (by Ritwick Dey) and click Install.
 
-## Step 4:
-Navigate to the project folder by pressing 'cd name-of-project'.
-
-## Step 5:
-Install dependencies by pressing 'npm install' in the terminal.
-
-## Step 6:
-Start the local development server by pressing 'npm run dev'.
-
-## Step 6:
-Open your browser and go to the URL provided in your terminal, e.g, http://localhost:3310.
-
+4. Open your index.html file, right-click anywhere inside the editor, and select Open with Live Server.
 
 # Instructions on how to run tests (npm install and npm test)
 ## Step 1:
@@ -145,5 +132,12 @@ Jest test results (all passing - minimum 10 tests)
 DOM manipulation features working
 
 # Reflection
+1. Minor fixes
+The most challenging part was going through the code with a fine tooth comb trying to figure out why it wasn't workig the way its supposed to. Going through each file and ensuring that every function is well structured and is not missing any commas, ensuring that there are no spelling errors.
 
+2. Research and learning beforehand
+It took a lot of research and presentations from me and my fellow classmates to revise and learn all the different concepts required for the assignment, but also implementing them was also a challenge, as a lot of the topics were quite new, such as try-catch blocks and error handling.
+
+3. Testing
+This was also quite a challenge. But through time and effort, I was able to complete it.
 
