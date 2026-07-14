@@ -10,7 +10,7 @@
     <div class="container">
         <h1>Task Management System</h1>
 
-        <div class="add-task-section">
+        <form class="add-task-section" id="task-form">
             <h2>Add New Task</h2>
 
             <input type="text" id="title" placeholder="Task Title">
@@ -20,9 +20,9 @@
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
             </select>
-            <button class="add-task-btn" id="add-task-btn">Add Task</button>
+            <button type="submit" class="add-task-btn" id="add-task-btn">Add Task</button>
             <p class="form-error" id="form-error" hidden></p>
-        </div>
+        </form>
 
         <div class="task-list" id="task-list">
             <!-- Tasks will be displayed here -->
@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="dom.js"></script>
 
 </body>
 </html>

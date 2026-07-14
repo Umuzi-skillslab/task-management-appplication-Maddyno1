@@ -1,13 +1,13 @@
 // DOM Manipulation
 
 import { addTask, deleteTask, toggleTaskCompletion, taskList, TaskManager } from "./app.js";
-import { saveTasksToStorage, loadTaskFromStorage, loadTasksFromStorage } from "./utils.js";
+import { saveTasksToStorage, loadTasksFromStorage, loadTasksFromStorage } from "./utils.js";
 
 
 // Proper DOM selectors
 function setupEventListeners() {
     const taskForm = document.getElementById("task-form");
-    const taskListContainer = document.getElementById("#task-list");
+    const taskListContainer = document.getElementById("task-list");
     const titleInput = document.getElementById("title");
 
     if (!taskForm) {
@@ -85,7 +85,7 @@ function displayTasks() {
     for (const task of taskList) {
         const div = document.createElement("div");
         div.className = `task${task.completed ? " task--completed" : ""}`;
-        div.dataset.task.id = task.id;
+        div.dataset.taskId = task.id;
 
         div.innerHTML = `
         <h3></h3>
@@ -119,17 +119,17 @@ function updateStatistics() {
     if (totalE1) totalE1.textContent = `${total}`;
     if (activeE1) activeE1.textContent = `${active}`;
     if (completedE1) completedE1.textContent = `${completed}`;
-    if (highE1E1) highE1.textContent = `${highPriority}`;
+    if (highE1) highE1.textContent = `${highPriority}`;
 }
 
 function clearFormError() {
-    const errorE1 = Document.getElementById("form-error");
+    const errorE1 = document.getElementById("form-error");
     if (errorE1) errorE1.hidden = true;
 }
 
 // Function with event handling
 function handleTaskListClick(event) {
-    const button =event.target.closest("button[]data-action");
+    const button =event.target.closest("button[data-action]");
     if (!button) return;
 
     const taskE1 = button.closest("[data-task-id]");

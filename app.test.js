@@ -3,7 +3,7 @@
 import {
     Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion,
     findTaskByTitle, updateTaskPriority, getTaskDetails, mergeTasks,
-    countCompletedTasks, CalculateAveragePriority, getHighPriorityTasks,
+    countCompletedTasks, calculateAveragePriority, getHighPriorityTasks,
     taskList,
 } from "./app.js";
 
@@ -60,7 +60,7 @@ describe("SubTask class (inheritance)", () => {
 describe("Task list function", () => {
     test("addTask should add task to the task list", () => {
         const task = addTask("New Task", "Test", 2);
-        expect(task).toBeInstanceOf("Task");
+        expect(task).toBeInstanceOf(Task);
         expect(taskList).toHaveLength(1);
         expect(taskList[0].title).toBe("New Task");
     });
@@ -161,7 +161,7 @@ describe("Recursive function", () => {
     test("countCompletedTasks should count completed tasks recursively", () => {
         const tasks = [new Task(1, "A", "d", 1), new Task(2, "B", "d", 2)];
         tasks[0].toggleCompletion();
-        expect(countTasksRecursive(tasks)).toBe(1)
+        expect(countcompleted(tasks)).toBe(1)
     });
 
     test("countCompletedTasks should return 0 for empty array", () => {

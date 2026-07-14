@@ -37,7 +37,7 @@ class SubTask extends Task {
     }
 
     getInfo() {
-        return `${super.getInfo()} [Subtask of: ${this.parentTask}]`;
+        return `${super.getInfo()} [SubTask of: ${this.parentTask}]`;
     }
 }
 
@@ -78,7 +78,7 @@ function toggleTaskCompletion(taskId) {
 // Function with for...of loop
 function displayAllTasks() {
     for (const task of taskList) {
-        console.log(task.getInfo);
+        console.log(task.getInfo());
     }
 }
 
@@ -143,22 +143,22 @@ const TaskManager = {
     getTotalTasks() { return this.task.length; },
     getCompletedTasks() { return this.task.filter(t => t.completed); },
     getAveragePriority() {
-        if (!this.tasks.length) return 0;
-        return this.tasks.reduce((sum, t) => sum + t.priority, 0) /
+        if (!this.task.length) return 0;
+        return this.task.reduce((sum, t) => sum + t.priority, 0) /
             this.tasks.length;
     },
     getSummary() {
-        const { length: total } = this.tasks;
+        const { length: total } = this.task;
         const completed = this.getCompletedTasks().length;
         return `${completed}/${total} tasks completed`;
     },
     persist() {
-        saveTasksToStorage(this.tasks);
+        saveTasksToStorage(this.task);
     },
 };
 
 export {
-    Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion, 
+    Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion, getTaskDetails,
     displayAllTasks, findTaskByTitle, updateTaskPriority, cloneTask, mergeTasks,
     countCompletedTasks, calculateAveragePriority,getHighPriorityTasks, createPriorityFilter,
     isHighPriority, taskList,
