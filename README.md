@@ -137,10 +137,16 @@ Run the tests by pressing 'npm test'.
 # Test results
 
 # Screenshots
-Application running in browser
-Console showing no errors
-Jest test results (all passing - minimum 10 tests)
-DOM manipulation features working
+
+![Application running in browser](screenshots/AppInBrowser.png)
+
+![Console showing no errors](screenshots/Console.png)
+
+![Jest test results](screenshots/Test2.png)
+
+![DOM manipulation features working](screenshots/DOMManipulation.png)
+
+
 
 # Reflection
 1. Minor fixes
