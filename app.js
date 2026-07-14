@@ -1,11 +1,16 @@
 // Task Management Application - Starter Code with Errors
 
+import { saveTasksToStorage, isHighPriority } from "./utils.js"
+
 let taskList = [];
 let taskCounter = 0;
 
 //Task class
 class Task {
     constructor(id, title, description, priority) {
+        if (typeof title !== "string" || !title.trim()) {
+            throw new TypeError("Task title must be a non-empty string");
+        }
         this.id = id;
         this.title = title;
         this.description = description;
@@ -13,53 +18,73 @@ class Task {
         this.completed = false;
     }
 
-    toggleCompletion() { this.completed = !this.completed; }
+    toggleCompletion() {
+        this.completed = !this.completed;
+        return this.completed;
+    }
 
     getInfo() {
-        return `Task: ${this.title} - Priority: ${this.priority}`;
+        const status = this.completed ? "Completed" : "Pending";
+        return `Task: ${this.title} - Priority: ${this.priority} - Status: ${status}`;
     }
 }
 
-// Subtask class with inheritance issues
+// Subtask class
 class SubTask extends Task {
     constructor(id, title, description, priority, parentTask) {
         super(id, title, description, priority)
         this.parentTask = parentTask;
     }
+
+    getInfo() {
+        return `${super.getInfo()} [Subtask of: ${this.parentTask}]`;
+    }
 }
 
-// Functions with errors
+//Higher-order function
+function createPriorityFilter(minPriority) {
+    return (task) => task.priority > minPriority;
+}
 
 // Function with  error handling
 function addTask(title, description, priority) {
-    if (typeof title !== "string" || !title.trim()) {
-        console.log("Cannot add task:Title must be a non-empty string");
-
+    try {
+        if (typeof priority !== "number" || priority < 1) {
+            throw new Error(`Cannot add task "${title}": priority must be a positive number`);
+        }
+        const newTask = new Task(taskCounter, title, description, priority);
+        taskList.push(newTask);
+        taskCounter++;
+        return newTask;
+    } catch (err) {
+        console.error(err.message);
         return undefined;
     }
-    const newTask = new Task(taskCounter, title, description, priority);
-    taskList.push(newTask);
-    taskCounter++;
-    return newTask;
 }
 
-// Function with incorrect loop
+function deleteTask(taskId) {
+    const index = taskList.findIndex((task) => task.id === taskId);
+    if (index === -1) return false;
+    taskList.splice(index, 1);
+    return true;
+}
+
+function toggleTaskCompletion(taskId) {
+    const task = taskList.find((t) => t.id === taskId);
+    if (!task) return false;
+    return task.toggleCompletion();
+}
+
+// Function with for...of loop
 function displayAllTasks() {
-    // Wrong loop - should use for-of
     for (const task of taskList) {
-        console.log(task.title);
+        console.log(task.getInfo);
     }
 }
 
-// Function missing parameter
 function findTaskByTitle(title) {
-    // Wrong loop construct
-    let i = 0;
-    while (i < taskList.length) {
-        if (taskList[i].title === title) {
-            return taskList[i];
-        }
-        i++
+    for (const task of taskList) {
+        if (task.title === title) return task;
     }
     return undefined;
 }
@@ -67,75 +92,74 @@ function findTaskByTitle(title) {
 // Function with type checking
 function updateTaskPriority(taskId, newPriority) {
     if (typeof newPriority !== "number" || newPriority < 1) {
-        console.log("Priority must be a positive number");
+        console.error(`Priority ${newPriority} is invalid; must be a positive number`);
         return false;
     }
 
-    for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].id === taskId) {
-            taskList[i].priority = newPriority;
-            return true;
-        }
-    }
-    return false;
+    const task = taskList.find((t) => t.id === taskId);
+    if (!task) return false;
+    task.priority = newPriority;
+    return true;
 }
 
 // Function that uses destructuring
-function getTaskDetails(task) {
-
-    const { title, description, priority, completed } = task;
-
+function getTaskDetails({ title, description, priority, completed }) {
     return { title, description, priority, completed };
 }
 
+function cloneTask(task) {
+    return { ...task };
+}
 // Function with spread/rest operators
-function mergeTasks(list1, list2) {
-    return [...list1, list2];
+function mergeTasks(...lists) {
+    return lists.reduce((all, list) => [...all, ...list], []);
 }
 
-// Recursive function with error
+// Recursive function
 function countCompletedTasks(tasks, index = 0) {
+    if (!Array.isArray(tasks)) return 0
     if (index >= tasks.length) return 0;
-    // Missing: null/undefined check
 
-    if (tasks[index].completed) {
-        return 1 + countCompletedTasks(tasks, index + 1);
-    } else {
-        return countCompletedTasks(tasks, index + 1);
-    }
+    const [current] = tasks.slice(index, index + 1);
+    const increment = current && current.completed ? 1 : 0
+    return increment + countCompletedTasks(tasks, index + 1);
 }
 
-// Function with Math object issues
+// Function with Math object
 function calculateAveragePriority() {
     if (taskList.length === 0) return 0;
-    let total = 0;
-    // Missing: check for empty array
-    for (let i = 0; i < taskList.length; i++) {
-        let total = total + taskList[i].priority;
-    }
-    // Should use Math.round or toFixed
+    const total = taskList.reduce((sum, task) => sum + task.priority, 0);
     return Math.round((total / taskList.length) * 100) / 100;
 }
 
-// Filter function with errors
+// Filter function
 function getHighPriorityTasks(minPriority) {
-    return taskList.filter(t => t.priority > minPriority);
+    return taskList.filter(createPriorityFilter(minPriority));
 }
 
-// Object with missing methods
+// Object with correct methods
 const TaskManager = {
     tasks: taskList,
     getTotalTasks() { return this.task.length; },
     getCompletedTasks() { return this.task.filter(t => t.completed); },
     getAveragePriority() {
         if (!this.tasks.length) return 0;
-        return this.tasks.reduce((s, t) => s + t.priority, 0) /
-        this.task.length;
-    }
+        return this.tasks.reduce((sum, t) => sum + t.priority, 0) /
+            this.tasks.length;
+    },
+    getSummary() {
+        const { length: total } = this.tasks;
+        const completed = this.getCompletedTasks().length;
+        return `${completed}/${total} tasks completed`;
+    },
+    persist() {
+        saveTasksToStorage(this.tasks);
+    },
 };
 
 export {
-    Task, SubTask, TaskManager,
-    addTask, findTaskByTitle, updateTaskPriority,
-    mergeTasks, getHighPriorityTasks
+    Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion, 
+    displayAllTasks, findTaskByTitle, updateTaskPriority, cloneTask, mergeTasks,
+    countCompletedTasks, calculateAveragePriority,getHighPriorityTasks, createPriorityFilter,
+    isHighPriority, taskList,
 };
