@@ -140,20 +140,20 @@ function getHighPriorityTasks(minPriority) {
 // Object with correct methods
 const TaskManager = {
     tasks: taskList,
-    getTotalTasks() { return this.task.length; },
-    getCompletedTasks() { return this.task.filter(t => t.completed); },
+    getTotalTasks() { return this.tasks.length; },
+    getCompletedTasks() { return this.tasks.filter(t => t.completed); },
     getAveragePriority() {
-        if (!this.task.length) return 0;
-        return this.task.reduce((sum, t) => sum + t.priority, 0) /
+        if (!this.tasks.length) return 0;
+        return this.tasks.reduce((sum, t) => sum + t.priority, 0) /
             this.tasks.length;
     },
     getSummary() {
-        const { length: total } = this.task;
+        const { length: total } = this.tasks;
         const completed = this.getCompletedTasks().length;
         return `${completed}/${total} tasks completed`;
     },
     persist() {
-        saveTasksToStorage(this.task);
+        saveTasksToStorage(this.tasks);
     },
 };
 

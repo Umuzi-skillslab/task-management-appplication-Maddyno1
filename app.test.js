@@ -3,8 +3,7 @@
 import {
     Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion,
     findTaskByTitle, updateTaskPriority, getTaskDetails, mergeTasks,
-    countCompletedTasks, calculateAveragePriority, getHighPriorityTasks,
-    taskList,
+    countCompletedTasks, calculateAveragePriority, getHighPriorityTasks, taskList,
 } from "./app.js";
 
 beforeEach(() => {
@@ -161,7 +160,7 @@ describe("Recursive function", () => {
     test("countCompletedTasks should count completed tasks recursively", () => {
         const tasks = [new Task(1, "A", "d", 1), new Task(2, "B", "d", 2)];
         tasks[0].toggleCompletion();
-        expect(countcompleted(tasks)).toBe(1)
+        expect(countCompletedTasks(tasks)).toBe(1)
     });
 
     test("countCompletedTasks should return 0 for empty array", () => {
@@ -185,7 +184,7 @@ describe("TaskManager", () => {
     });
 
     test("getAveragePriority should computes the average across all tasks", () => {
-        addTask("A", "d", );
+        addTask("A", "d", 2);
         addTask("B", "d", 6);
         expect(TaskManager.getAveragePriority()).toBe(4);
     });

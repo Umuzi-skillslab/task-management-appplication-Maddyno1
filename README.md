@@ -100,15 +100,20 @@ Added a module script and corrected the order of the scripts.
 
 
 # Features Added
+1. Added Babel for testing.
+2. Added modules at the beginning and end of files.
+3. Added recursive functions and spread/rest operators.
+4. Added error handling.
 
 # Instructions on how to run the application
-1. Open your project folder in Visual Studio Code.
+## Step 1
+Open your project folder in your local files.
 
-2. Click the Extensions icon on the left sidebar (looks like 4 blocks).
+## Step 2
+Click on the index.html file and open it with your browser.
 
-3. Search for Live Server (by Ritwick Dey) and click Install.
-
-4. Open your index.html file, right-click anywhere inside the editor, and select Open with Live Server.
+## Step 3
+Go to your browser and your app should be open.
 
 # Instructions on how to run tests (npm install and npm test)
 ## Step 1:
@@ -118,7 +123,13 @@ Open your terminal by pressing 'Ctrl + ` '.
 Navigate to the main directory of your file where the package.json file is by pressing 'cd/path/to/project'.
 
 ## Step 3:
-Install dependencies(if you haven't already) by pressing 'npm install'.
+Install dependencies(if you haven't already) by pressing 'npm install --save-dev @babel/core @babel/preset-env babel-jest'.
+
+## Step 4:
+Add a Babel file named 'babel.config.cjs' then type the following in the file: 
+module.exports = {
+  presets: [["@babel/preset-env", { targets: { node: "current" } }]],
+};
 
 ## Step 4:
 Run the tests by pressing 'npm test'.
