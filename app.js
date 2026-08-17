@@ -2,7 +2,7 @@
 
 import { saveTasksToStorage, isHighPriority } from "./utils.js"
 
-let taskList = [];
+const taskList = [];
 let taskCounter = 0;
 
 //Task class
