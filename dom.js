@@ -153,7 +153,10 @@ function initializeApp() {
     try {
         const saved = loadTasksFromStorage();
         for (const t of saved) {
-            addTask(t.title, t.description, t.priority);
+            const task = addTask(t.title, t.description, t.priority);
+            if (task && t.completed) {
+                task.completed = true;
+            }
         }
     } catch (err){
         console.error("Could not restore saved tasks:", err);

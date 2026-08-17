@@ -127,9 +127,9 @@ function countCompletedTasks(tasks, index = 0) {
 
 // Function with Math object
 function calculateAveragePriority() {
-    if (taskList.length === 0) return 0;
-    const total = taskList.reduce((sum, task) => sum + task.priority, 0);
-    return Math.round((total / taskList.length) * 100) / 100;
+    if (!Array.isArray(tasks) || tasks.length === 0) return 0;
+    const total = tasks.reduce((sum, task) => sum + task.priority, 0);
+    return Math.round((total /tasks.length) * 100) /100
 }
 
 // Filter function
