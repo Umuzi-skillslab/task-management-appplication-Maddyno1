@@ -1,6 +1,6 @@
 // Task Management Application - Starter Code with Errors
 
-import { saveTasksToStorage, isHighPriority } from "./utils.js"
+import { saveTasksToStorage } from "./utils.js"
 
 const taskList = [];
 let taskCounter = 0;
