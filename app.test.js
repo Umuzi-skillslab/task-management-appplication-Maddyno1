@@ -4,10 +4,12 @@ import {
     Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion,
     findTaskByTitle, updateTaskPriority, getTaskDetails, mergeTasks,
     countCompletedTasks, calculateAveragePriority, getHighPriorityTasks, taskList,
+    _resetTaskCounter
 } from "./app.js";
 
 beforeEach(() => {
     taskList.length = 0;
+    _resetTaskCounter();
 });
 
 describe("Task Class", () => {

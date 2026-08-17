@@ -5,6 +5,10 @@ import { saveTasksToStorage, isHighPriority } from "./utils.js"
 const taskList = [];
 let taskCounter = 0;
 
+function _resetTaskCounter() {
+    taskCounter = 0;
+}
+
 //Task class
 class Task {
     constructor(id, title, description, priority) {
@@ -161,5 +165,5 @@ export {
     Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion, getTaskDetails,
     displayAllTasks, findTaskByTitle, updateTaskPriority, cloneTask, mergeTasks,
     countCompletedTasks, calculateAveragePriority,getHighPriorityTasks, createPriorityFilter,
-    isHighPriority, taskList,
+    isHighPriority, taskList, _resetTaskCounter,
 };
