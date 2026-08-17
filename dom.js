@@ -47,7 +47,7 @@ function handleAddTask(event) {
     const title = titleInput.value.trim();
     const description = descInput.value.trim();
     const priorityMap = { Low: 1, Medium: 2, High: 3 };
-    const priority = priorityInput ? priorityMap[priorityInput.value] || 1 : 1;
+    const priority = priorityMap[priorityInput?.value] ?? 1;
 
     if (!title) {
         if (errorEI) {
