@@ -107,13 +107,14 @@ Added a module script and corrected the order of the scripts.
 
 # Instructions on how to run the application
 ## Step 1
-Open your project folder in your local files.
+Open your project in VS code.
 
 ## Step 2
-Click on the index.html file and open it with your browser.
+Install the "Live server" extension.
 
 ## Step 3
-Go to your browser and your app should be open.
+Right-click on the index.html file and open it via the Liver Server.
+
 
 # Instructions on how to run tests (npm install and npm test)
 ## Step 1:
