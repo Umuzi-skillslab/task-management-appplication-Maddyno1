@@ -37,7 +37,7 @@ function handleAddTask(event) {
     const titleInput = document.getElementById("title");
     const descInput = document.getElementById("description");
     const priorityInput = document.getElementById("priority");
-    const errorFirst = document.getElementById("form-error");
+    const errorEI = document.getElementById("form-error");
 
     if (!titleInput || !descInput) {
         console.error("Taks form inputs not found");
@@ -50,9 +50,9 @@ function handleAddTask(event) {
     const priority = priorityInput ? priorityMap[priorityInput.value] || 1 : 1;
 
     if (!title) {
-        if (errorFirst) {
-            errorFirst.textContent = "Please enter a task title.";
-            errorFirst.hidden = false;
+        if (errorEI) {
+            errorEI.textContent = "Please enter a task title.";
+            errorEI.hidden = false;
         }
         titleInput.focus();
         return;
@@ -111,20 +111,20 @@ function updateStatistics() {
     const active = total - completed;
     const highPriority = taskList.filter((t) => t.priority >= 3).length;
 
-    const totalFirst = document.getElementById("stat-total");
-    const activeFirst = document.getElementById("stat-active");
-    const completedFirst = document.getElementById("stat-completed");
-    const highFirst = document.getElementById("stat-high");
+    const totalEI = document.getElementById("stat-total");
+    const activeEI = document.getElementById("stat-active");
+    const completedEI = document.getElementById("stat-completed");
+    const highEI = document.getElementById("stat-high");
 
-    if (totalFirst) totalFirst.textContent = `${total}`;
-    if (activeFirst) activeFirst.textContent = `${active}`;
-    if (completedFirst) completedFirst.textContent = `${completed}`;
-    if (highFirst) highFirst.textContent = `${highPriority}`;
+    if (totalEI) totalEI.textContent = `${total}`;
+    if (activeEI) activeEI.textContent = `${active}`;
+    if (completedEI) completedEI.textContent = `${completed}`;
+    if (highEI) highEI.textContent = `${highPriority}`;
 }
 
 function clearFormError() {
-    const errorFirst = document.getElementById("form-error");
-    if (errorFirst) errorFirst.hidden = true;
+    const errorEI = document.getElementById("form-error");
+    if (errorEI) errorEI.hidden = true;
 }
 
 // Function with event handling
@@ -132,10 +132,10 @@ function handleTaskListClick(event) {
     const button =event.target.closest("button[data-action]");
     if (!button) return;
 
-    const taskFirst = button.closest("[data-task-id]");
-    if (!taskFirst) return;
+    const taskEI = button.closest("[data-task-id]");
+    if (!taskEI) return;
 
-    const taskId = Number(taskFirst.dataset.taskId);
+    const taskId = Number(taskEI.dataset.taskId);
     const { action } = button.dataset;
 
     if (action === "complete") {
