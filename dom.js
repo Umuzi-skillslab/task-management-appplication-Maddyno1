@@ -1,7 +1,7 @@
 // DOM Manipulation
 
 import { addTask, deleteTask, toggleTaskCompletion, taskList, TaskManager } from "./app.js";
-import { saveTasksToStorage, loadTasksFromStorage, loadTasksFromStorage } from "./utils.js";
+import { saveTasksToStorage, loadTasksFromStorage } from "./utils.js";
 
 
 // Proper DOM selectors
