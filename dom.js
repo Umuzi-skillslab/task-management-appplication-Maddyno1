@@ -1,6 +1,6 @@
 // DOM Manipulation
 
-import { addTask, deleteTask, toggleTaskCompletion, taskList, TaskManager } from "./app.js";
+import { addTask, deleteTask, toggleTaskCompletion, taskList, TaskManager, calculateAveragePriority } from "./app.js";
 import { saveTasksToStorage, loadTasksFromStorage } from "./utils.js";
 
 
@@ -109,16 +109,19 @@ function updateStatistics() {
     const {length: total } = taskList;
     const completed = TaskManager.getCompletedTasks().length;
     const active = total - completed;
+    const avgPriority = calculateAveragePriority();
     const highPriority = taskList.filter((t) => t.priority >= 3).length;
 
     const totalEl = document.getElementById("stat-total");
     const activeEl = document.getElementById("stat-active");
     const completedEl = document.getElementById("stat-completed");
+    const avgPriorityEl = document.getElementById("stat-avg-priority");
     const highEl = document.getElementById("stat-high");
 
     if (totalEl) totalEl.textContent = `${total}`;
     if (activeEl) activeEl.textContent = `${active}`;
     if (completedEl) completedEl.textContent = `${completed}`;
+    if (avgPriorityEl) avgPriorityEl.textContent = `${avgPriority}`;
     if (highEl) highEl.textContent = `${highPriority}`;
 }
 
