@@ -5,7 +5,7 @@ import {
     findTaskByTitle, updateTaskPriority, getTaskDetails, mergeTasks,
     countCompletedTasks, calculateAveragePriority, getHighPriorityTasks, taskList,
     _resetTaskCounter
-} from "./app.js";
+} from "../src/app.js";
 
 beforeEach(() => {
     taskList.length = 0;
