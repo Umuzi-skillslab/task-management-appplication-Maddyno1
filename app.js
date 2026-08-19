@@ -165,5 +165,5 @@ export {
     Task, SubTask, TaskManager, addTask, deleteTask, toggleTaskCompletion, getTaskDetails,
     displayAllTasks, findTaskByTitle, updateTaskPriority, cloneTask, mergeTasks,
     countCompletedTasks, calculateAveragePriority,getHighPriorityTasks, createPriorityFilter,
-    isHighPriority, taskList, _resetTaskCounter,
+    taskList, _resetTaskCounter,
 };
